@@ -31,18 +31,21 @@ const birthdate = book.get('author').get('birthdate')
 
 ## Specification
 
-Let's define function
+Let's add `Symbol.get` (`@@get`). Then add following to `Object.prototype`
 
 ```es6
-get(obj, key) => obj.get ? obj.get(key) : obj[key]
+Object.prototype[Symbol.get] = (key) => this[key]
 ```
+
+Whenever object destructuring is used, `@@get` method is used to extract
+value of keys.
 
 Then destructuring example from our previous example would be equivalent to
 
 ```es6
-const first = get(get(get(book, 'author'), 'name'), 'first')
-const last = get(get(get(book, 'author'), 'name'), 'last')
-const birthdate = get(get(book, 'author'), 'birthdate')
+const first = book[Symbol.get]('author')[Symbol.get]('name')[Symbol.get]('first')
+const last = book[Symbol.get]('author')[Symbol.get]('name')[Symbol.get]('last')
+const birthdate = book[Symbol.get]('author')[Symbol.get]('birthdate')
 ```
 
 ## Implementation by transpilers
