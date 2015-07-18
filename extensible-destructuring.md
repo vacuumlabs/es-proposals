@@ -46,4 +46,4 @@ const birthdate = get(get(book, 'author'), 'birthdate')
 ```
 
 ## Implementation by transpilers
-Very straihtforward. It should be very easy to implement in Babel.
+Very straightforward. It should be very easy to implement in Babel.
