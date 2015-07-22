@@ -48,5 +48,20 @@ const last = book[Symbol.get]('author')[Symbol.get]('name')[Symbol.get]('last')
 const birthdate = book[Symbol.get]('author')[Symbol.get]('birthdate')
 ```
 
+### Destructuring of non-string keys
+
+`Object` support only string keys, but other data structures could support more
+than that. To allow using non-string keys in destructuring assignment whilst
+preventing ambiguity, following syntax can be reused:
+
+```es6
+// Demonstration on immutable data structures, because they support compound
+// keys.
+import {Map, List} from 'immutable';
+
+const map = Map([[List(20, 10, 1989), Map([['weekday', 'sunday']])]]);
+const {[List(20, 10, 1989)]: {weekday}} = map;
+```
+
 ## Implementation by transpilers
 Very straightforward. It should be very easy to implement in Babel.
