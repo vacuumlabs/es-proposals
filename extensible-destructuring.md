@@ -64,4 +64,5 @@ const {[List(20, 10, 1989)]: {weekday}} = map;
 ```
 
 ## Implementation by transpilers
-Very straightforward. It should be very easy to implement in Babel.
+There is babel plugin for that:
+https://www.npmjs.com/package/babel-plugin-extensible-destructuring
